@@ -22,13 +22,13 @@ int main(){
 
     dp[0] = 1;
 
-    for(int i = 0; i <= x; i++){
-        for (auto coin: coins){
+    for(auto coin: coins){
+        for (int i = 0; i <= x; i++){
             if (i-coin >= 0) {
                 dp[i] += dp[i-coin];
+                dp[i] %= MOD;
             }
         }
-        dp[i] %= MOD;
     }
     
     cout << dp[x] << endl;
